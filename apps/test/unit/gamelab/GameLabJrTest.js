@@ -63,7 +63,7 @@ describe('Game Lab Jr Helper Library', () => {
   });
 
   it ('defines some globals', () => {
-    expect(makeNewSprite).to.exist;
+    expect(window.makeNewSprite).to.exist;
     expect(addBehavior).to.exist;
     expect(findBehavior).to.exist;
     expect(behaviorsEqual).to.exist;
