@@ -51,10 +51,16 @@ describe('Game Lab Jr Helper Library', () => {
         .replace(/^function (\w*)/gm, 'window.$1 = function ')
         .replace(/^var /gm, 'window.');
 
+    console.log('about to run lib, length: ' + lib.length);
+    console.log(lib);
+
     eval(lib); // eslint-disable-line no-eval
 
     const newKeys = Object.keys(window);
     extraKeys = _.difference(newKeys, oldKeys);
+    console.log('before hook ran');
+    console.log('makeNewSprite is:');
+    console.log(window.makeNewSprite);
   });
 
   after(() => {
@@ -63,6 +69,7 @@ describe('Game Lab Jr Helper Library', () => {
   });
 
   it ('defines some globals', () => {
+    console.log('running globals test');
     expect(window.makeNewSprite).to.exist;
     expect(addBehavior).to.exist;
     expect(findBehavior).to.exist;
