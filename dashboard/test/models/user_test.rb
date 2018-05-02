@@ -2340,6 +2340,7 @@ class UserTest < ActiveSupport::TestCase
     assert user.valid?
     assert_sensitive_info_was_purged user
     refute_nil user.purged_at
+    assert_nil user.deleted_at # This doesn't get set on purge
 
     # Also check information intentionally not purged
     assert_equal user.user_type, 'teacher'
@@ -2376,6 +2377,7 @@ class UserTest < ActiveSupport::TestCase
     assert user.valid?
     assert_sensitive_info_was_purged user
     refute_nil user.purged_at
+    assert_nil user.deleted_at # This doesn't get set on purge
 
     # Also check information intentionally not purged
     assert_equal user.user_type, 'student'
